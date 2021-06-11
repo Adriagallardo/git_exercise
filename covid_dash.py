@@ -3,6 +3,8 @@ from plotly.subplots import make_subplots
 import pandas as pd
 import requests
 from datetime import datetime
+
+# >>>>>>>>>>>>>>>>>>>>>> TROZO 1 <<<<<<<<<<<<<<<<<<<<<<<<<<
 #https://towardsdatascience.com/building-a-real-time-dashboard-using-python-plotly-library-and-web-service-145f50d204f0
 
 raw=requests.get("https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/1/query?where=1%3D1&outFields=*&outSR=4326&f=json")
@@ -14,6 +16,7 @@ df_final.set_index("OBJECTID")
 df_final = df_final[["Country_Region", "Province_State", "Lat",
 "Long_", "Confirmed", "Deaths", "Recovered", "Last_Update"]]
 
+# >>>>>>>>>>>>>>>>>>>>>> TROZO 2 <<<<<<<<<<<<<<<<<<<<<<<<<<
 def convertTime(t):
     t = int(t)
     return datetime.fromtimestamp(t)
@@ -42,7 +45,8 @@ df_top10 = df_total.nlargest(10, "Deaths")
 top10_countries_3 = df_top10["Country_Region"].tolist()
 top10_deaths = df_top10["Deaths"].tolist()
 
-fig = make_LO_QUE_TE_DE_LA_GANA(
+# >>>>>>>>>>>>>>>>>>>>>> TROZO 3 <<<<<<<<<<<<<<<<<<<<<<<<<<
+fig = make_subplots(
 rows = 4, cols = 6,
 specs=[
 [{"type": "scattergeo", "rowspan": 4, "colspan": 3},
@@ -165,4 +169,4 @@ x=0.35,
 y=0)
 ]
 )
-fig.write_html('templates/quedivertidoesesteejercicio.html')
+fig.write_html('templates/dashboard.html')
