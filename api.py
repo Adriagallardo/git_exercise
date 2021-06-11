@@ -6,7 +6,6 @@ app = Flask(__name__)
 @app.route("/")
 
 def landing_page():
-
     return render_template('index.html')
 
 if __name__ == '__main__':
@@ -15,7 +14,8 @@ if __name__ == '__main__':
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template('ÑAÑAAÑÑAÑAÑAÑAÑÑA.html')
+    return render_template('dashboard.html')
+
 @app.route("/map")
 def map():
     return render_template('map.html')
